@@ -8,6 +8,7 @@
   <name>ecommerce-backend</name>
   <url>http://maven.apache.org</url>
   <build>
+    <finalName>ecommerce-backend</finalName>
     <plugins>
       <plugin>
         <groupId>org.wildfly.plugins</groupId>

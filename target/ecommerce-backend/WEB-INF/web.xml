@@ -1,0 +1,21 @@
+<web-app xmlns="http://java.sun.com/xml/ns/javaee"
+    version="3.0">
+
+    <display-name>Ecommerce Backend</display-name>
+
+    <servlet>
+        <servlet-name>jakarta.ws.rs.core.Application</servlet-name>
+        <servlet-class>org.jboss.resteasy.plugins.server.servlet.HttpServletDispatcher</servlet-class>
+        <init-param>
+            <param-name>jakarta.ws.rs.Application</param-name>
+            <param-value>com.ecommerce.RestApplication</param-value> <!-- Asegúrate de usar tu
+            paquete correcto -->
+        </init-param>
+    </servlet>
+
+    <servlet-mapping>
+        <servlet-name>jakarta.ws.rs.core.Application</servlet-name>
+        <url-pattern>/api/*</url-pattern>
+    </servlet-mapping>
+
+</web-app>
