@@ -1,3 +1,8 @@
 com\ecommerce\RestApplication.class
-com\ecommerce\HelloResource.class
+com\ecommerce\dao\CategoriaDAO.class
+com\ecommerce\model\Categoria.class
 com\ecommerce\App.class
+com\ecommerce\dao\ProductoDAO.class
+com\ecommerce\model\Producto.class
+com\ecommerce\resources\ProductoResource.class
+com\ecommerce\resources\CategoriaResource.class

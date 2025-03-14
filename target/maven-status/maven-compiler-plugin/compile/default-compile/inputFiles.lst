@@ -1,3 +1,8 @@
 C:\Users\Andres Moises\Desktop\backend\ecommerce-backend\src\main\java\com\ecommerce\App.java
-C:\Users\Andres Moises\Desktop\backend\ecommerce-backend\src\main\java\com\ecommerce\HelloResource.java
+C:\Users\Andres Moises\Desktop\backend\ecommerce-backend\src\main\java\com\ecommerce\dao\CategoriaDAO.java
+C:\Users\Andres Moises\Desktop\backend\ecommerce-backend\src\main\java\com\ecommerce\dao\ProductoDAO.java
+C:\Users\Andres Moises\Desktop\backend\ecommerce-backend\src\main\java\com\ecommerce\model\Categoria.java
+C:\Users\Andres Moises\Desktop\backend\ecommerce-backend\src\main\java\com\ecommerce\model\Producto.java
+C:\Users\Andres Moises\Desktop\backend\ecommerce-backend\src\main\java\com\ecommerce\resources\CategoriaResource.java
+C:\Users\Andres Moises\Desktop\backend\ecommerce-backend\src\main\java\com\ecommerce\resources\ProductoResource.java
 C:\Users\Andres Moises\Desktop\backend\ecommerce-backend\src\main\java\com\ecommerce\RestApplication.java
