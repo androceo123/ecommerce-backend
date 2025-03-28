@@ -1,8 +1,17 @@
-C:\Users\Andres Moises\Desktop\backend\ecommerce-backend\src\main\java\com\ecommerce\App.java
-C:\Users\Andres Moises\Desktop\backend\ecommerce-backend\src\main\java\com\ecommerce\dao\CategoriaDAO.java
-C:\Users\Andres Moises\Desktop\backend\ecommerce-backend\src\main\java\com\ecommerce\dao\ProductoDAO.java
-C:\Users\Andres Moises\Desktop\backend\ecommerce-backend\src\main\java\com\ecommerce\model\Categoria.java
-C:\Users\Andres Moises\Desktop\backend\ecommerce-backend\src\main\java\com\ecommerce\model\Producto.java
-C:\Users\Andres Moises\Desktop\backend\ecommerce-backend\src\main\java\com\ecommerce\resources\CategoriaResource.java
-C:\Users\Andres Moises\Desktop\backend\ecommerce-backend\src\main\java\com\ecommerce\resources\ProductoResource.java
-C:\Users\Andres Moises\Desktop\backend\ecommerce-backend\src\main\java\com\ecommerce\RestApplication.java
+C:\Users\Giuli\OneDrive\Escritorio\fpuna\backend\ecommerce-backend\src\main\java\com\ecommerce\App.java
+C:\Users\Giuli\OneDrive\Escritorio\fpuna\backend\ecommerce-backend\src\main\java\com\ecommerce\dao\CategoriaDAO.java
+C:\Users\Giuli\OneDrive\Escritorio\fpuna\backend\ecommerce-backend\src\main\java\com\ecommerce\dao\ClienteDAO.java
+C:\Users\Giuli\OneDrive\Escritorio\fpuna\backend\ecommerce-backend\src\main\java\com\ecommerce\dao\DetalleVentaDAO.java
+C:\Users\Giuli\OneDrive\Escritorio\fpuna\backend\ecommerce-backend\src\main\java\com\ecommerce\dao\ProductoDAO.java
+C:\Users\Giuli\OneDrive\Escritorio\fpuna\backend\ecommerce-backend\src\main\java\com\ecommerce\dao\VentaDAO.java
+C:\Users\Giuli\OneDrive\Escritorio\fpuna\backend\ecommerce-backend\src\main\java\com\ecommerce\model\Categoria.java
+C:\Users\Giuli\OneDrive\Escritorio\fpuna\backend\ecommerce-backend\src\main\java\com\ecommerce\model\Cliente.java
+C:\Users\Giuli\OneDrive\Escritorio\fpuna\backend\ecommerce-backend\src\main\java\com\ecommerce\model\DetalleVenta.java
+C:\Users\Giuli\OneDrive\Escritorio\fpuna\backend\ecommerce-backend\src\main\java\com\ecommerce\model\Producto.java
+C:\Users\Giuli\OneDrive\Escritorio\fpuna\backend\ecommerce-backend\src\main\java\com\ecommerce\model\Venta.java
+C:\Users\Giuli\OneDrive\Escritorio\fpuna\backend\ecommerce-backend\src\main\java\com\ecommerce\resources\CategoriaResource.java
+C:\Users\Giuli\OneDrive\Escritorio\fpuna\backend\ecommerce-backend\src\main\java\com\ecommerce\resources\ClienteResource.java
+C:\Users\Giuli\OneDrive\Escritorio\fpuna\backend\ecommerce-backend\src\main\java\com\ecommerce\resources\ProductoResource.java
+C:\Users\Giuli\OneDrive\Escritorio\fpuna\backend\ecommerce-backend\src\main\java\com\ecommerce\resources\VentaResource.java
+C:\Users\Giuli\OneDrive\Escritorio\fpuna\backend\ecommerce-backend\src\main\java\com\ecommerce\RestApplication.java
+C:\Users\Giuli\OneDrive\Escritorio\fpuna\backend\ecommerce-backend\src\main\java\TestController.java
