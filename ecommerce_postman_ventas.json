@@ -1,0 +1,122 @@
+{
+    "info": {
+        "name": "Ecommerce - Crear Venta",
+        "_postman_id": "ecommerce-ventas",
+        "description": "Colecci\u00f3n para registrar una venta con correo de confirmaci\u00f3n v\u00eda Mailtrap",
+        "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+    },
+    "item": [
+        {
+            "name": "Crear Cliente",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"nombre\": \"Juan\",\n    \"apellido\": \"Gonzalez\",\n    \"cedula\": \"12345678\",\n    \"email\": \"juan@example.com\"\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:8080/ecommerce-backend/api/clientes",
+                    "protocol": "http",
+                    "host": [
+                        "localhost:8080"
+                    ],
+                    "path": [
+                        "ecommerce-backend",
+                        "api",
+                        "clientes"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Crear Categor\u00eda",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"nombre\": \"Electr\\u00f3nica\"\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:8080/ecommerce-backend/api/categorias",
+                    "protocol": "http",
+                    "host": [
+                        "localhost:8080"
+                    ],
+                    "path": [
+                        "ecommerce-backend",
+                        "api",
+                        "categorias"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Crear Producto",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"nombre\": \"Auriculares Bluetooth\",\n    \"precioVenta\": 200.0,\n    \"cantidadExistente\": 10,\n    \"categoria\": {\n        \"idCategoria\": 1\n    }\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:8080/ecommerce-backend/api/productos",
+                    "protocol": "http",
+                    "host": [
+                        "localhost:8080"
+                    ],
+                    "path": [
+                        "ecommerce-backend",
+                        "api",
+                        "productos"
+                    ]
+                }
+            }
+        },
+        {
+            "name": "Registrar Venta",
+            "request": {
+                "method": "POST",
+                "header": [
+                    {
+                        "key": "Content-Type",
+                        "value": "application/json"
+                    }
+                ],
+                "body": {
+                    "mode": "raw",
+                    "raw": "{\n    \"fecha\": \"2025-04-01T00:00:00\",\n    \"total\": 400.0,\n    \"cliente\": {\n        \"idCliente\": 1\n    },\n    \"detalles\": [\n        {\n            \"producto\": {\n                \"idProducto\": 1\n            },\n            \"cantidad\": 2,\n            \"precioUnitario\": 200.0,\n            \"totalDetalle\": 400.0\n        }\n    ]\n}"
+                },
+                "url": {
+                    "raw": "http://localhost:8080/ecommerce-backend/api/ventas",
+                    "protocol": "http",
+                    "host": [
+                        "localhost:8080"
+                    ],
+                    "path": [
+                        "ecommerce-backend",
+                        "api",
+                        "ventas"
+                    ]
+                }
+            }
+        }
+    ]
+}
