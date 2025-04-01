@@ -4,6 +4,8 @@ import java.util.List;
 
 import com.ecommerce.model.Venta;
 import com.ecommerce.model.Cliente;
+import com.ecommerce.model.DetalleVenta;
+
 import java.util.Date;
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;

@@ -1,38 +1,19 @@
 package com.ecommerce.dto;
 
+import com.ecommerce.model.DetalleVenta;
+
 public class DetalleVentaDTO {
-    private String nombreProducto;
-    private String nombreCategoria;
-    private int cantidad;
-    private double precioUnitario;
-    private double totalDetalle;
+    public String nombreProducto;
+    public String nombreCategoria;
+    public int cantidad;
+    public double precioUnitario;
+    public double totalDetalle;
 
-    public DetalleVentaDTO(String nombreProducto, String nombreCategoria, int cantidad, double precioUnitario) {
-        this.nombreProducto = nombreProducto;
-        this.nombreCategoria = nombreCategoria;
-        this.cantidad = cantidad;
-        this.precioUnitario = precioUnitario;
-        this.totalDetalle = cantidad * precioUnitario;
+    public DetalleVentaDTO(DetalleVenta detalleVenta) {
+        this.nombreProducto = detalleVenta.getProducto().getNombre();
+        this.nombreCategoria = detalleVenta.getProducto().getCategoria().getNombre();
+        this.cantidad = detalleVenta.getCantidad();
+        this.precioUnitario = detalleVenta.getProducto().getPrecioVenta();
+        this.totalDetalle = detalleVenta.getCantidad() * precioUnitario;
     }
-
-    public String getNombreProducto() {
-        return nombreProducto;
-    }
-
-    public String getNombreCategoria() {
-        return nombreCategoria;
-    }
-
-    public int getCantidad() {
-        return cantidad;
-    }
-
-    public double getPrecioUnitario() {
-        return precioUnitario;
-    }
-
-    public double getTotalDetalle() {
-        return totalDetalle;
-    }
-
 }

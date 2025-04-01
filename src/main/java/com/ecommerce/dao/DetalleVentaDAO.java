@@ -1,6 +1,8 @@
 package com.ecommerce.dao;
 
 import com.ecommerce.model.DetalleVenta;
+import com.ecommerce.model.Venta;
+
 import jakarta.persistence.EntityManager;
 import jakarta.persistence.PersistenceContext;
 import jakarta.transaction.Transactional;
@@ -19,14 +21,12 @@ public class DetalleVentaDAO {
     }
 
     @Transactional
-    public List<DetalleVenta> buscarDetallesPorVentaId(Long idVenta) {
-        String jpql = "SELECT d FROM DetalleVenta d "
-                        + "JOIN FETCH d.producto "
-                        + "JOIN FETCH d.producto.categoria "
-                        + "WHERE d.venta.idVenta = :idVenta";
+    public List<DetalleVenta> buscarDetallesPorVenta(Venta venta) {
+        String jpql = "SELECT d FROM DetalleVenta d ";
+                        // + "WHERE d.venta = :venta";
 
         return entityManager.createQuery(jpql, DetalleVenta.class)
-                           .setParameter("idVenta", idVenta)
+                        //    .setParameter("venta", venta)
                            .getResultList();
     }
 }

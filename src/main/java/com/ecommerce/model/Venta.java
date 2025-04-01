@@ -22,7 +22,6 @@ public class Venta {
     private Double total;
 
     @OneToMany(mappedBy = "venta", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
-    @JsonIgnore
     private List<DetalleVenta> detalles = new ArrayList<>();
 
     @ManyToOne(optional = false)

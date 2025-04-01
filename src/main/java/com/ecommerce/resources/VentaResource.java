@@ -11,6 +11,7 @@ import com.ecommerce.model.Venta;
 import java.util.Date;
 import java.text.SimpleDateFormat;
 import java.util.List;
+import org.jboss.logging.Logger;
 import java.util.stream.Collectors;
 
 import jakarta.inject.Inject;
@@ -22,6 +23,7 @@ import jakarta.ws.rs.core.Response;
 @Produces(MediaType.APPLICATION_JSON)
 @Consumes(MediaType.APPLICATION_JSON)
 public class VentaResource {
+    private static final Logger LOGGER = Logger.getLogger(VentaResource.class);
 
     @Inject
     private VentaDAO ventaDAO;
@@ -46,7 +48,11 @@ public class VentaResource {
 
             // Asociar el detalle con la venta ANTES de persistir
             detalle.setVenta(newVenta);
+
+            LOGGER.trace("Creando detalle para id: " + detalle.getIdDetalle());
         }
+
+        LOGGER.trace("Longitud de detalles es " + newVenta.getDetalles().size());
 
         // Guardar la venta con todos sus detalles ya asociados
         ventaDAO.registrarVenta(newVenta);
