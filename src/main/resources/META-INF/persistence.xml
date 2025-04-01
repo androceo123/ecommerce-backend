@@ -1,21 +1,14 @@
 <persistence xmlns="http://xmlns.jcp.org/xml/ns/persistence" version="2.1">
     <persistence-unit name="ecommercePU">
-        <jta-data-source>java:/PostgresDS</jta-data-source> <!-- JTA DataSource -->
+        <jta-data-source>java:/H2DS</jta-data-source> <!-- Nombre JNDI del datasource H2 configurado en WildFly -->
 
         <properties>
-            <!-- Credenciales corregidas -->
-            <property name="jakarta.persistence.jdbc.user" value="postgres" />
-            <property name="jakarta.persistence.jdbc.password" value="1234" />
-
             <!-- Configuración de Hibernate -->
             <property name="hibernate.hbm2ddl.auto" value="update" />
             <property name="hibernate.show_sql" value="true" />
             <property name="hibernate.format_sql" value="true" />
             <property name="hibernate.id.new_generator_mappings" value="true"/>
-            <property name="hibernate.dialect" value="org.hibernate.dialect.PostgreSQLDialect" />
-            
-            <!-- Optional: Ensure clean database creation -->
-            <!-- <property name="jakarta.persistence.schema-generation.database.action" value="drop-and-create"/> -->
+            <property name="hibernate.dialect" value="org.hibernate.dialect.H2Dialect" />
         </properties>
     </persistence-unit>
 </persistence>
