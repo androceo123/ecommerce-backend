@@ -1,5 +1,6 @@
 package com.ecommerce.model;
 
+import com.fasterxml.jackson.annotation.JsonIgnore;
 import jakarta.persistence.*;
 
 @Entity
@@ -12,6 +13,7 @@ public class DetalleVenta {
 
     @ManyToOne
     @JoinColumn(name = "idVenta", nullable = false)
+    @JsonIgnore  // Evita la recursividad infinita con la entidad Venta
     private Venta venta;
 
     @ManyToOne
@@ -27,7 +29,7 @@ public class DetalleVenta {
     @Column(nullable = false)
     private Double totalDetalle;
 
-    // Getters y setters para DetalleVenta
+    // Getters y setters
     public Long getIdDetalle() {
         return idDetalle;
     }
