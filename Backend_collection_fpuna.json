@@ -281,7 +281,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "http://localhost:8080/ecommerce-backend/api/ventas?fecha=2023-10-01T10:00:00Z",
+              "raw": "http://localhost:8080/ecommerce-backend/api/ventas?fecha=2025-04-30",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -295,7 +295,7 @@
               "query": [
                 {
                   "key": "fecha",
-                  "value": "2023-10-01T10:00:00Z"
+                  "value": "2025-04-30"
                 }
               ]
             }
@@ -308,7 +308,7 @@
             "method": "GET",
             "header": [],
             "url": {
-              "raw": "http://localhost:8080/ecommerce-backend/api/ventas?fecha=2023-10-01T10:00:00Z",
+              "raw": "http://localhost:8080/ecommerce-backend/api/ventas?cliente=1",
               "protocol": "http",
               "host": [
                 "localhost"
@@ -321,8 +321,8 @@
               ],
               "query": [
                 {
-                  "key": "fecha",
-                  "value": "2023-10-01T10:00:00Z"
+                  "key": "cliente",
+                  "value": "1"
                 }
               ]
             }
