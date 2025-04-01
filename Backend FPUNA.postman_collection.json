@@ -1,0 +1,157 @@
+{
+	"info": {
+		"_postman_id": "cc0861b6-e50a-44a7-a05d-301ed8220064",
+		"name": "Backend FPUNA",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "18554875"
+	},
+	"item": [
+		{
+			"name": "productos",
+			"item": [
+				{
+					"name": "Obtener productos",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/ecommerce-backend/api/productos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ecommerce-backend",
+								"api",
+								"productos"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Producto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre\": \"Producto Ejemplo 2\",\r\n  \"precioVenta\": 100.0,\r\n  \"cantidadExistente\": 1,\r\n  \"categoria\": {\r\n    \"idCategoria\": 1\r\n  }\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/ecommerce-backend/api/productos",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ecommerce-backend",
+								"api",
+								"productos"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "categorias",
+			"item": [
+				{
+					"name": "Obtener Categorias",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/ecommerce-backend/api/categorias",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ecommerce-backend",
+								"api",
+								"categorias"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Crear Categorias",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"categoria ejemplo\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/ecommerce-backend/api/categorias",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ecommerce-backend",
+								"api",
+								"categorias"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ventas",
+			"item": [
+				{
+					"name": "Crear venta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"fecha\": \"2023-10-01T10:00:00Z\",\r\n    \"total\": 150.00,\r\n    \"emailCliente\": \"cliente@example.com\",\r\n    \"detalles\": [\r\n        {\r\n            \"producto\": {\r\n                \"idProducto\": 1\r\n            },\r\n            \"cantidad\": 2,\r\n            \"precioUnitario\": 50.00,\r\n            \"totalDetalle\": 100.00\r\n        },\r\n        {\r\n            \"producto\": {\r\n                \"idProducto\": 2\r\n            },\r\n            \"cantidad\": 1,\r\n            \"precioUnitario\": 50.00,\r\n            \"totalDetalle\": 50.00\r\n        }\r\n    ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/ecommerce-backend/api/ventas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ecommerce-backend",
+								"api",
+								"ventas"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}

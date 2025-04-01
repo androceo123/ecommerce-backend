@@ -1,6 +1,7 @@
 package com.ecommerce.resources;
 
 import com.ecommerce.dao.ClienteDAO;
+import com.ecommerce.dto.ClienteDTO;
 import com.ecommerce.model.Cliente;
 import jakarta.inject.Inject;
 import jakarta.validation.ConstraintViolation;
@@ -78,23 +79,6 @@ public class ClienteResource {
         }
         clienteDAO.eliminar(id);
         return Response.noContent().build();
-    }
-
-    // DTO interno
-    public static class ClienteDTO {
-        public Long id;
-        public String nombre;
-        public String apellido;
-        public String cedula;
-        public String email;
-
-        public ClienteDTO(Cliente c) {
-            this.id = c.getIdCliente();
-            this.nombre = c.getNombre();
-            this.apellido = c.getApellido();
-            this.cedula = c.getCedula();
-            this.email = c.getEmail();
-        }
     }
 
     // Error personalizado
