@@ -2,7 +2,6 @@ package com.ecommerce.dao;
 
 import java.util.List;
 
-import com.ecommerce.model.Producto;
 import com.ecommerce.model.Venta;
 import com.ecommerce.model.Cliente;
 import java.util.Date;

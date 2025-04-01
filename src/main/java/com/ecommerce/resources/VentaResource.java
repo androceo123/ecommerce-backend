@@ -8,12 +8,9 @@ import com.ecommerce.model.DetalleVenta;
 import com.ecommerce.model.Producto;
 import com.ecommerce.model.Venta;
 
-import java.util.Calendar;
 import java.util.Date;
 import java.text.SimpleDateFormat;
-import java.time.LocalDate;
 import java.util.List;
-import java.util.ArrayList;
 import java.util.stream.Collectors;
 
 import jakarta.inject.Inject;
