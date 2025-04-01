@@ -1,9 +1,10 @@
 {
 	"info": {
-		"_postman_id": "cc0861b6-e50a-44a7-a05d-301ed8220064",
+		"_postman_id": "5c5616f6-7dcc-46df-9b67-f40f6645caa6",
 		"name": "Backend FPUNA",
 		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
-		"_exporter_id": "18554875"
+		"_exporter_id": "43630455",
+		"_collection_link": "https://marcelopausl.postman.co/workspace/781dd0bf-2b96-4180-8433-0f01c2b1fa45/collection/43630455-5c5616f6-7dcc-46df-9b67-f40f6645caa6?action=share&source=collection_link&creator=43630455"
 	},
 	"item": [
 		{
@@ -37,7 +38,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"nombre\": \"Producto Ejemplo 2\",\r\n  \"precioVenta\": 100.0,\r\n  \"cantidadExistente\": 1,\r\n  \"categoria\": {\r\n    \"idCategoria\": 1\r\n  }\r\n}",
+							"raw": "{\r\n  \"nombre\": \"manzana\",\r\n  \"precioVenta\": 100.0,\r\n  \"cantidadExistente\": 420,\r\n  \"categoria\": {\r\n    \"idCategoria\": 1\r\n  }\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -128,7 +129,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"fecha\": \"2023-10-01T10:00:00Z\",\r\n    \"total\": 150.00,\r\n    \"emailCliente\": \"cliente@example.com\",\r\n    \"detalles\": [\r\n        {\r\n            \"producto\": {\r\n                \"idProducto\": 1\r\n            },\r\n            \"cantidad\": 2,\r\n            \"precioUnitario\": 50.00,\r\n            \"totalDetalle\": 100.00\r\n        },\r\n        {\r\n            \"producto\": {\r\n                \"idProducto\": 2\r\n            },\r\n            \"cantidad\": 1,\r\n            \"precioUnitario\": 50.00,\r\n            \"totalDetalle\": 50.00\r\n        }\r\n    ]\r\n}",
+							"raw": "{\r\n    \"fecha\": \"2023-10-01\",\r\n    \"total\": 150.00,\r\n    \"cliente\": {\r\n        \"idCliente\": 1\r\n    },\r\n    \"detalles\": [\r\n        {\r\n            \"producto\": {\r\n                \"idProducto\": 5\r\n            },\r\n            \"cantidad\": 3,\r\n            \"precioUnitario\": 50.00,\r\n            \"totalDetalle\": 100.00\r\n        },\r\n        {\r\n            \"producto\": {\r\n                \"idProducto\": 1\r\n            },\r\n            \"cantidad\": 1,\r\n            \"precioUnitario\": 50.00,\r\n            \"totalDetalle\": 50.00\r\n        }\r\n    ]\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -146,6 +147,152 @@
 								"ecommerce-backend",
 								"api",
 								"ventas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListarTodo",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/ecommerce-backend/api/ventas",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ecommerce-backend",
+								"api",
+								"ventas"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListarFecha",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/ecommerce-backend/api/ventas?fecha=2023-10-01T10:00:00Z",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ecommerce-backend",
+								"api",
+								"ventas"
+							],
+							"query": [
+								{
+									"key": "fecha",
+									"value": "2023-10-01T10:00:00Z"
+								}
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ListarCliente",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/ecommerce-backend/api/ventas?fecha=2023-10-01T10:00:00Z",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ecommerce-backend",
+								"api",
+								"ventas"
+							],
+							"query": [
+								{
+									"key": "fecha",
+									"value": "2023-10-01T10:00:00Z"
+								}
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "clientes",
+			"item": [
+				{
+					"name": "Crear",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"John\",\r\n    \"apellido\": \"Doe\",\r\n    \"cedula\": \"123456\",\r\n    \"email\": \"john.dow@mailserver.com\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://localhost:8080/ecommerce-backend/api/clientes",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ecommerce-backend",
+								"api",
+								"clientes"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Listar",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "detalle_venta",
+			"item": [
+				{
+					"name": "ListarDetalleVenta",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://localhost:8080/ecommerce-backend/api/ventas/1/detalles",
+							"protocol": "http",
+							"host": [
+								"localhost"
+							],
+							"port": "8080",
+							"path": [
+								"ecommerce-backend",
+								"api",
+								"ventas",
+								"1",
+								"detalles"
 							]
 						}
 					},
