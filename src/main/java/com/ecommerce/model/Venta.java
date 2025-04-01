@@ -1,7 +1,6 @@
 package com.ecommerce.model;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import jakarta.persistence.*;
 
 import java.util.ArrayList;
@@ -26,8 +25,9 @@ public class Venta {
     @JsonIgnore
     private List<DetalleVenta> detalles = new ArrayList<>();
 
-    @Column(nullable = false)
-    private String emailCliente;
+    @ManyToOne(optional = false)
+    @JoinColumn(name = "idCliente", nullable = false, updatable = false)
+    private Cliente cliente;
 
     // Getters y setters para Venta
     public Long getIdVenta() {
@@ -62,11 +62,11 @@ public class Venta {
         this.detalles = detalles;
     }
 
-    public String getEmailCliente() {
-        return emailCliente;
+    public Cliente getCliente() {
+        return cliente;
     }
 
-    public void setEmailCliente(String emailCliente) {
-        this.emailCliente = emailCliente;
+    public void setCliente(Cliente cliente) {
+        this.cliente = cliente;
     }
 }
