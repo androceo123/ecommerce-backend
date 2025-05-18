@@ -1,4 +1,4 @@
-const { Hotel } = require('../models');
+const { Hotel } = require("../models");
 
 exports.crear = async (req, res) => {
   try {
@@ -16,20 +16,20 @@ exports.listar = async (_, res) => {
 
 exports.obtener = async (req, res) => {
   const hotel = await Hotel.findByPk(req.params.id);
-  if (!hotel) return res.status(404).json({ error: 'No existe' });
+  if (!hotel) return res.status(404).json({ error: "No existe" });
   res.json(hotel);
 };
 
 exports.actualizar = async (req, res) => {
   const hotel = await Hotel.findByPk(req.params.id);
-  if (!hotel) return res.status(404).json({ error: 'No existe' });
+  if (!hotel) return res.status(404).json({ error: "No existe" });
   await hotel.update(req.body);
   res.json(hotel);
 };
 
 exports.borrar = async (req, res) => {
   const hotel = await Hotel.findByPk(req.params.id);
-  if (!hotel) return res.status(404).json({ error: 'No existe' });
+  if (!hotel) return res.status(404).json({ error: "No existe" });
   await hotel.destroy();
   res.status(204).end();
 };

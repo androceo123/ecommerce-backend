@@ -1,4 +1,4 @@
-const { Habitacion, Hotel } = require('../models');
+const { Habitacion, Hotel } = require("../models");
 
 exports.crear = async (req, res) => {
   try {
@@ -12,10 +12,12 @@ exports.crear = async (req, res) => {
 exports.listar = async (_, res) => {
   try {
     const habs = await Habitacion.findAll({
-      include: [{
-        model: Hotel,
-        as: 'hotel'
-      }]
+      include: [
+        {
+          model: Hotel,
+          as: "hotel",
+        },
+      ],
     });
     res.json(habs);
   } catch (err) {
@@ -26,12 +28,14 @@ exports.listar = async (_, res) => {
 exports.obtener = async (req, res) => {
   try {
     const hab = await Habitacion.findByPk(req.params.id, {
-      include: [{
-        model: Hotel,
-        as: 'hotel'
-      }]
+      include: [
+        {
+          model: Hotel,
+          as: "hotel",
+        },
+      ],
     });
-    if (!hab) return res.status(404).json({ error: 'No existe' });
+    if (!hab) return res.status(404).json({ error: "No existe" });
     res.json(hab);
   } catch (err) {
     res.status(500).json({ error: err.message });
@@ -41,7 +45,7 @@ exports.obtener = async (req, res) => {
 exports.actualizar = async (req, res) => {
   try {
     const hab = await Habitacion.findByPk(req.params.id);
-    if (!hab) return res.status(404).json({ error: 'No existe' });
+    if (!hab) return res.status(404).json({ error: "No existe" });
     await hab.update(req.body);
     res.json(hab);
   } catch (err) {
@@ -52,7 +56,7 @@ exports.actualizar = async (req, res) => {
 exports.borrar = async (req, res) => {
   try {
     const hab = await Habitacion.findByPk(req.params.id);
-    if (!hab) return res.status(404).json({ error: 'No existe' });
+    if (!hab) return res.status(404).json({ error: "No existe" });
     await hab.destroy();
     res.status(204).end();
   } catch (err) {

@@ -1,18 +1,23 @@
-require('dotenv').config();
-const express = require('express');
-const { sequelize } = require('./models');
-const hoteles     = require('./routes/hoteles');
-const habitaciones= require('./routes/habitaciones');
+require("dotenv").config();
+const express = require("express");
+const { sequelize } = require("./models");
+const hotelesRoutes = require("./routes/hoteles");
+const habitacionesRoutes = require("./routes/habitaciones");
+const clientesRoutes = require("./routes/clientes");
 
 const app = express();
 app.use(express.json());
 
-app.use('/api/hoteles',     hoteles);
-app.use('/api/habitaciones', habitaciones);
+app.use("/api/hoteles", hotelesRoutes);
+app.use("/api/habitaciones", habitacionesRoutes);
+app.use("/api/clientes", clientesRoutes);
+app.use((_, res) => {
+  res.status(404).json({ error: "Ruta no encontrada" });
+});
 
 const PORT = process.env.PORT || 3000;
 app.listen(PORT, async () => {
   console.log(`Servidor escuchando en http://localhost:${PORT}`);
   await sequelize.authenticate();
-  console.log('Conectado a la base de datos.');
+  console.log("Conectado a la base de datos.");
 });
