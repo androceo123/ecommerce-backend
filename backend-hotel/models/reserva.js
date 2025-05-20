@@ -1,5 +1,3 @@
-const { Model } = require("sequelize");
-
 module.exports = (sequelize, DataTypes) => {
   const Reserva = sequelize.define("Reserva", {
     fechaIngreso: {
@@ -14,6 +12,8 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: true,
     },
+  }, {
+    tableName: "reservas"  // 👈 nombre de tabla forzado
   });
 
   Reserva.associate = (models) => {

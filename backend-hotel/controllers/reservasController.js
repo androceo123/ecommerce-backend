@@ -3,6 +3,8 @@ const { Op } = require("sequelize");
 
 exports.crearReserva = async (req, res) => {
   try {
+    console.log("➡️ BODY recibido:", req.body);
+
     const {
       fechaIngreso,
       fechaSalida,
@@ -14,10 +16,17 @@ exports.crearReserva = async (req, res) => {
       apellido,
     } = req.body;
 
+    if (!fechaIngreso || !fechaSalida || !hotelId || !habitacionId || !cedula) {
+      return res.status(400).json({ error: "Faltan datos obligatorios en la reserva" });
+    }
+
+    const parsedHotelId = parseInt(hotelId);
+    const parsedHabitacionId = parseInt(habitacionId);
+
     // Validar disponibilidad
     const reservasOcupadas = await Reserva.findOne({
       where: {
-        habitacionId,
+        habitacionId: parsedHabitacionId,
         [Op.or]: [
           {
             fechaIngreso: {
@@ -46,14 +55,14 @@ exports.crearReserva = async (req, res) => {
       fechaIngreso,
       fechaSalida,
       cantidadPersonas,
-      hotelId,
-      habitacionId,
+      hotelId: parsedHotelId,
+      habitacionId: parsedHabitacionId,
       clienteId: cliente.id,
     });
 
     res.status(201).json(reserva);
   } catch (error) {
-    console.error("Error creando reserva:", error);
+    console.error("Error creando reserva:", error.message, error.stack);
     res.status(500).json({ error: "Error interno del servidor" });
   }
 };
@@ -89,7 +98,7 @@ exports.listarReservas = async (req, res) => {
         { model: Cliente },
         {
           model: Habitacion,
-          include: [{ model: Hotel }],
+          include: [{ model: Hotel, as: "hotel" }],
         },
       ],
       order: [
@@ -101,7 +110,7 @@ exports.listarReservas = async (req, res) => {
 
     res.json(reservas);
   } catch (error) {
-    console.error("Error listando reservas:", error);
+    console.error("Error listando reservas:", error.message, error.stack);
     res.status(500).json({ error: "Error interno del servidor" });
   }
 };

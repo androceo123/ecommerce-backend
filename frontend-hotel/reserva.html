@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reserva de Habitaciones</title>
+</head>
+<body>
+  <h1>Buscar habitaciones disponibles</h1>
+  <form id="busqueda-form">
+    <label>Hotel:
+      <select id="hotelId" required></select>
+    </label><br />
+    <label>Fecha de Ingreso: <input type="date" id="fechaIngreso" required /></label><br />
+    <label>Fecha de Salida: <input type="date" id="fechaSalida" required /></label><br />
+    <label>Capacidad mínima (opcional): <input type="number" id="capacidad" /></label><br />
+    <button type="submit">Buscar</button>
+  </form>
+
+  <h2>Habitaciones disponibles</h2>
+  <ul id="habitaciones"></ul>
+
+  <div id="reserva-form" style="display: none">
+    <h3>Completar datos del cliente y confirmar reserva</h3>
+    <form id="confirmacion-form">
+      <input type="hidden" id="habitacionId" />
+      <input type="hidden" id="hotelIdConfirm" />
+      <input type="hidden" id="fechaReservaIngreso" />
+      <input type="hidden" id="fechaReservaSalida" />
+      <input type="hidden" id="cantidadReserva" />
+
+      <label>Cédula: <input type="text" id="cedula" required /></label><br />
+      <label>Nombre: <input type="text" id="nombre" /></label><br />
+      <label>Apellido: <input type="text" id="apellido" /></label><br />
+      <button type="submit">Confirmar reserva</button>
+    </form>
+  </div>
+
+  <script>
+    const API_BASE = "http://localhost:3000";
+
+    // Cargar hoteles al iniciar
+    window.addEventListener("DOMContentLoaded", async () => {
+      const hotelSelect = document.getElementById("hotelId");
+      const res = await fetch(`${API_BASE}/api/hoteles`);
+      const hoteles = await res.json();
+      hoteles.forEach(hotel => {
+        const option = document.createElement("option");
+        option.value = hotel.id;
+        option.textContent = hotel.nombre;
+        hotelSelect.appendChild(option);
+      });
+    });
+
+    document.getElementById("busqueda-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const fechaIngreso = document.getElementById("fechaIngreso").value;
+      const fechaSalida = document.getElementById("fechaSalida").value;
+      const capacidad = document.getElementById("capacidad").value;
+      const hotelId = document.getElementById("hotelId").value;
+
+      const query = new URLSearchParams({ fechaIngreso });
+      if (capacidad) query.append("capacidad", capacidad);
+      query.append("hotelId", hotelId);
+
+      const res = await fetch(`${API_BASE}/api/habitaciones/disponibles?${query}`);
+      const habitaciones = await res.json();
+
+      const lista = document.getElementById("habitaciones");
+      lista.innerHTML = "";
+
+      habitaciones.forEach((h) => {
+        const li = document.createElement("li");
+        li.textContent = `Habitación ${h.numero} - Piso ${h.piso} - Capacidad ${h.capacidad} - ${h.caracteristicas}`;
+        const boton = document.createElement("button");
+        boton.textContent = "Reservar";
+        boton.onclick = () => prepararReserva(h, fechaIngreso, fechaSalida, capacidad);
+        li.appendChild(boton);
+        lista.appendChild(li);
+      });
+    });
+
+    function prepararReserva(h, fechaIngreso, fechaSalida, capacidad) {
+      document.getElementById("habitacionId").value = h.id;
+      document.getElementById("hotelIdConfirm").value = h.hotelId;
+      document.getElementById("fechaReservaIngreso").value = fechaIngreso;
+      document.getElementById("fechaReservaSalida").value = fechaSalida;
+      document.getElementById("cantidadReserva").value = capacidad || h.capacidad;
+      document.getElementById("reserva-form").style.display = "block";
+    }
+
+    document.getElementById("confirmacion-form").addEventListener("submit", async (e) => {
+      e.preventDefault();
+      const body = {
+        fechaIngreso: document.getElementById("fechaReservaIngreso").value,
+        fechaSalida: document.getElementById("fechaReservaSalida").value,
+        cantidadPersonas: document.getElementById("cantidadReserva").value,
+        hotelId: document.getElementById("hotelIdConfirm").value,
+        habitacionId: document.getElementById("habitacionId").value,
+        cedula: document.getElementById("cedula").value,
+        nombre: document.getElementById("nombre").value,
+        apellido: document.getElementById("apellido").value,
+      };
+
+      const res = await fetch(`${API_BASE}/api/reservas`, {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+
+      if (res.ok) {
+        alert("Reserva registrada exitosamente");
+        document.getElementById("reserva-form").style.display = "none";
+      } else {
+        const err = await res.json();
+        alert("Error al registrar: " + err.error);
+      }
+    });
+  </script>
+</body>
+</html>

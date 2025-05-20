@@ -1,6 +1,7 @@
 const router = require("express").Router();
 const ctrl = require("../controllers/habitacionController");
 
+router.get("/disponibles", ctrl.disponibles);
 router.post("/", ctrl.crear);
 router.get("/", ctrl.listar);
 router.get("/:id", ctrl.obtener);

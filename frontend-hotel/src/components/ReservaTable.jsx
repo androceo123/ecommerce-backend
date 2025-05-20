@@ -19,12 +19,12 @@ export default function ReservaTable({ reservas }) {
       <tbody>
         {reservas.map((r) => (
           <tr key={r.id} className="hover:bg-blue-50">
-            <td className="p-2 border">{r.hotel}</td>
-            <td className="p-2 border">{r.habitacion}</td>
-            <td className="p-2 border">{r.piso}</td>
-            <td className="p-2 border">{r.cliente}</td>
-            <td className="p-2 border">{r.entrada}</td>
-            <td className="p-2 border">{r.salida}</td>
+            <td className="p-2 border">{r.Habitacion?.hotel?.nombre || r.hotelId}</td>
+            <td className="p-2 border">{r.Habitacion?.numero}</td>
+            <td className="p-2 border">{r.Habitacion?.piso}</td>
+            <td className="p-2 border">{r.Cliente?.nombre} {r.Cliente?.apellido}</td>
+            <td className="p-2 border">{r.fechaIngreso}</td>
+            <td className="p-2 border">{r.fechaSalida}</td>
           </tr>
         ))}
       </tbody>
@@ -33,15 +33,5 @@ export default function ReservaTable({ reservas }) {
 }
 
 ReservaTable.propTypes = {
-  reservas: PropTypes.arrayOf(
-    PropTypes.shape({
-      id: PropTypes.number.isRequired,
-      hotel: PropTypes.string.isRequired,
-      habitacion: PropTypes.string.isRequired,
-      piso: PropTypes.number.isRequired,
-      cliente: PropTypes.string.isRequired,
-      entrada: PropTypes.string.isRequired,
-      salida: PropTypes.string,
-    })
-  ).isRequired,
+  reservas: PropTypes.array.isRequired,
 };

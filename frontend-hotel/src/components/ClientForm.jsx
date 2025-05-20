@@ -1,7 +1,7 @@
 import { useState } from "react";
 import PropTypes from "prop-types";
 
-export default function ClientForm({ roomId }) {
+export default function ClientForm({ roomId, hotelId, fechaIngreso, fechaSalida, cantidadPersonas }) {
   const [cliente, setCliente] = useState({
     cedula: "",
     nombre: "",
@@ -11,10 +11,37 @@ export default function ClientForm({ roomId }) {
   const handleChange = (e) =>
     setCliente({ ...cliente, [e.target.name]: e.target.value });
 
-  const handleSubmit = (e) => {
+  const handleSubmit = async (e) => {
     e.preventDefault();
-    // TODO: Enviar a backend
-    console.log("Reserva confirmada:", { ...cliente, roomId });
+
+    const body = {
+      fechaIngreso,
+      fechaSalida,
+      cantidadPersonas,
+      hotelId,
+      habitacionId: roomId,
+      cedula: cliente.cedula,
+      nombre: cliente.nombre,
+      apellido: cliente.apellido,
+    };
+
+    try {
+      const res = await fetch("http://localhost:3000/api/reservas", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(body),
+      });
+
+      if (res.ok) {
+        alert("Reserva confirmada");
+      } else {
+        const err = await res.json();
+        alert("Error al confirmar: " + err.error);
+      }
+    } catch (err) {
+      console.error("Error al conectar:", err);
+      alert("Error de red");
+    }
   };
 
   return (
@@ -50,4 +77,8 @@ export default function ClientForm({ roomId }) {
 
 ClientForm.propTypes = {
   roomId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  hotelId: PropTypes.oneOfType([PropTypes.string, PropTypes.number]).isRequired,
+  fechaIngreso: PropTypes.string.isRequired,
+  fechaSalida: PropTypes.string.isRequired,
+  cantidadPersonas: PropTypes.oneOfType([PropTypes.string, PropTypes.number]),
 };

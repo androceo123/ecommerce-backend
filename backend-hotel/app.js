@@ -5,9 +5,12 @@ const hotelesRoutes = require("./routes/hoteles");
 const habitacionesRoutes = require("./routes/habitaciones");
 const clientesRoutes = require("./routes/clientes");
 const reservasRoutes = require("./routes/reservas");
+const cors = require("cors");
+
 
 
 const app = express();
+app.use(cors()); // Permitir CORS
 app.use(express.json());
 
 app.use("/api/hoteles", hotelesRoutes);
